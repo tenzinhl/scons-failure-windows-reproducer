@@ -1,2 +1,10 @@
-env = Environment()
+# Change to path to your mingw ucrt
+mgw_ucrt_path=r'E:\tools\ucrt-11.2.0'
+
+env = Environment(tools=[])
+env.AppendENVPath('PATH',mgw_ucrt_path)
+env.Append(CPPPATH=mgw_ucrt_path)
+env.Tool('mingw')
 env.Program("hello.c")
+print("PATH:%s"%env['ENV']['PATH'])
+print("CC:%s"%env['CC'])
