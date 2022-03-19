@@ -1,0 +1,10 @@
+# Change to path to your mingw ucrt
+mgw_ucrt_path=r'C:\tools\MinGW\winlibs-x86_64-posix-seh-gcc-11.2.0-llvm-13.0.0-mingw-w64ucrt-9.0.0-r2\mingw64\bin'
+
+env = Environment(tools=[])
+env.AppendENVPath('PATH',mgw_ucrt_path)
+env.Append(CPPPATH=mgw_ucrt_path)
+env.Tool('mingw')
+env.Program("hello.c")
+print("PATH:%s"%env['ENV']['PATH'])
+print("CC:%s"%env['CC'])
